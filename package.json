@@ -1,5 +1,5 @@
 {
-  "name": "@chiffre/template-website",
+  "name": "how-far-along",
   "version": "0.0.0-semantically-released",
   "description": "Template website with Next.js & Chakra UI",
   "main": "dist/index.js",
@@ -7,17 +7,19 @@
   "private": true,
   "author": {
     "name": "François Best",
-    "email": "francois.best@chiffre.io",
-    "url": "https://chiffre.io"
+    "email": "contact@francoisbest.com",
+    "url": "https://francoisbest.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chiffre-io/template-website"
+    "url": "https://github.com/franky47/how-far-along"
   },
   "keywords": [
-    "chiffre",
     "webapp",
-    "template"
+    "nextjs",
+    "pregnancy",
+    "due-date",
+    "baby"
   ],
   "scripts": {
     "dev": "next",
