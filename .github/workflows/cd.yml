@@ -5,6 +5,9 @@ on:
     branches:
       - prod
 
+env:
+  DEPLOYMENT_URL: ${{ secrets.DEPLOYMENT_URL }}
+
 jobs:
   cd:
     name: Continuous Delivery
