@@ -16,7 +16,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 }) => {
   return (
     <PseudoBox {...props}>
-      <FormLabel htmlFor="dueDate">Due Date</FormLabel>
+      <FormLabel htmlFor="dueDate" color="gray.800">
+        Due Date:
+      </FormLabel>
       <Input
         type="date"
         name="dueDate"

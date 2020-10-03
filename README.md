@@ -1,4 +1,4 @@
-# How Far Along ?
+# 🤰 How Far Along ?
 
 [![MIT License](https://img.shields.io/github/license/franky47/how-far-along.svg?color=blue)](https://github.com/franky47/how-far-along/blob/next/LICENSE)
 [![Continuous Integration](https://github.com/franky47/how-far-along/workflows/Continuous%20Integration/badge.svg?branch=next)](https://github.com/franky47/how-far-along/actions)
