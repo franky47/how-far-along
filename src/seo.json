@@ -1,0 +1,23 @@
+{
+  "title": "How far along ?",
+  "description": "Privacy-first pregnancy tracker",
+  "additionalMetaTags": [
+    { "property": "author", "content": "François Best" },
+    {
+      "property": "keywords",
+      "content": "pregnancy,baby,term,pregnant,tracker,privacy"
+    }
+  ],
+  "openGraph": {
+    "type": "website",
+    "locale": "en_GB",
+    "site_name": "How far along ?",
+    "images": [
+      {
+        "url": "/images/og.jpg",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  }
+}
