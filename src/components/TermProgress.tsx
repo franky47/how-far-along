@@ -44,10 +44,18 @@ export const TermProgress: React.FC<TermProgressProps> = ({
             {Math.floor(elapsed.asWeeks())}
           </StatNumber>
         </Stat>
+        <Stat textAlign="center" mb={[4, 0]}>
+          <StatLabel>Day</StatLabel>
+          <StatNumber fontSize="5xl">
+            {Math.round(
+              elapsed.subtract(Math.floor(elapsed.asWeeks()), 'week').asDays()
+            )}
+          </StatNumber>
+        </Stat>
         <Stat textAlign="center">
           <StatLabel>Baby is due in</StatLabel>
           <StatNumber fontSize="5xl">
-            {Math.round(remaining.asDays())}
+            {Math.ceil(remaining.asDays())}
           </StatNumber>
           <StatHelpText>days</StatHelpText>
         </Stat>
