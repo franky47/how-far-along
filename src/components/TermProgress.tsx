@@ -17,14 +17,18 @@ dayjs.extend(relativeTime)
 dayjs.extend(duration)
 
 export interface TermProgressProps extends StackProps {
+  babyName: string
   dueDate: string
+  refDate: string | null
 }
 
 export const TermProgress: React.FC<TermProgressProps> = ({
+  babyName,
   dueDate,
+  refDate,
   ...props
 }) => {
-  const now = dayjs()
+  const now = dayjs(refDate ?? undefined)
   const due = dayjs(dueDate)
   const remaining = dayjs.duration(due.diff(now))
   const elapsed = dayjs.duration(now.diff(due.subtract(41, 'week')))
@@ -53,7 +57,7 @@ export const TermProgress: React.FC<TermProgressProps> = ({
           </StatNumber>
         </Stat>
         <Stat textAlign="center">
-          <StatLabel>Baby is due in</StatLabel>
+          <StatLabel>{babyName} is due in</StatLabel>
           <StatNumber fontSize="5xl">
             {Math.ceil(remaining.asDays())}
           </StatNumber>

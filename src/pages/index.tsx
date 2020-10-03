@@ -11,6 +11,8 @@ import defaultSeoConfig from 'src/seo.json'
 
 const IndexPage: NextPage = () => {
   const [date, setDate] = useHashQuery('dueDate')
+  const [babyName] = useHashQuery('babyName')
+  const [now] = useHashQuery('now')
   return (
     <>
       <Head>
@@ -26,7 +28,11 @@ const IndexPage: NextPage = () => {
       <StackContainer mt={12} spacing={8}>
         {!!date && (
           <StackCard>
-            <TermProgress dueDate={date} />
+            <TermProgress
+              dueDate={date}
+              babyName={babyName ?? 'Baby'}
+              refDate={now}
+            />
           </StackCard>
         )}
         {!date && (
