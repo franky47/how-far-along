@@ -26,7 +26,7 @@ const loadFromEnv = names => {
 
 const nextConfig = {
   // Will be available both in the client and server
-  env: loadFromEnv(['SENTRY_DSN']),
+  env: loadFromEnv(['SENTRY_DSN', 'DEPLOYMENT_URL']),
 
   webpack: (config, { buildId }) => {
     // Fixes npm packages that depend on `fs` module
