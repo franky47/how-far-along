@@ -43,7 +43,7 @@ const IndexPage: NextPage = () => {
       const dueDate = dayjs(values.dateOfLastPeriod)
         .add(values.gestationWeeks, 'weeks')
         .format('YYYY-MM-DD')
-      hash.set('gestationWeeks', values.gestationWeeks.toFixed())
+      hash.set('gestationWeeks', values.gestationWeeks.toString())
       hash.set('dueDate', dueDate)
       if (values.babyName) {
         hash.set('babyName', values.babyName)
