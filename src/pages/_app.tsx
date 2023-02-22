@@ -1,3 +1,25 @@
-import { createChakraNextApp } from '@47ng/chakra-next'
+import { ChakraProvider } from '@chakra-ui/react'
+import { DefaultSeo } from 'next-seo'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import seo from 'src/seo.json'
 
-export default createChakraNextApp()
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Head>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤰</text></svg>"
+        />
+      </Head>
+      <DefaultSeo
+        {...seo}
+        canonical={process.env.NEXT_PUBLIC_DEPLOYMENT_URL ?? 'http://localhost'}
+      />
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </>
+  )
+}

@@ -1,40 +1,43 @@
-import React from 'react'
-import Stack, { StackProps } from '@chakra-ui/core/dist/Stack'
-import Text from '@chakra-ui/core/dist/Text'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import duration from 'dayjs/plugin/duration'
 import {
   Progress,
+  Stack,
+  StackProps,
   Stat,
+  StatGroup,
+  StatHelpText,
   StatLabel,
   StatNumber,
-  StatHelpText,
-  StatGroup
-} from '@chakra-ui/core'
+  Text
+} from '@chakra-ui/react'
+import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import React from 'react'
 
 dayjs.extend(relativeTime)
 dayjs.extend(duration)
 
-export interface TermProgressProps extends StackProps {
+type TermProgressProps = StackProps & {
   babyName: string
   dueDate: string
   refDate: string | null
+  gestationWeeks: number
 }
 
 export const TermProgress: React.FC<TermProgressProps> = ({
   babyName,
   dueDate,
   refDate,
+  gestationWeeks,
   ...props
 }) => {
   const now = dayjs(refDate ?? undefined)
   const due = dayjs(dueDate)
   const remaining = dayjs.duration(due.diff(now))
-  const elapsed = dayjs.duration(now.diff(due.subtract(41, 'week')))
+  const elapsed = dayjs.duration(now.diff(due.subtract(gestationWeeks, 'week')))
   const progress =
     (100 * elapsed.asMilliseconds()) /
-    dayjs.duration(41, 'week').asMilliseconds()
+    dayjs.duration(gestationWeeks, 'week').asMilliseconds()
 
   return (
     <Stack {...props} spacing={8}>

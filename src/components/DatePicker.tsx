@@ -1,11 +1,15 @@
+import {
+  FormControl,
+  FormControlProps,
+  FormLabel,
+  Input
+} from '@chakra-ui/react'
+import dayjs from 'dayjs'
 import React from 'react'
-import PseudoBox, { PseudoBoxProps } from '@chakra-ui/core/dist/PseudoBox'
-import { FormLabel, Input } from '@chakra-ui/core'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import dayjs from 'dayjs'
 
-export interface DatePickerProps extends PseudoBoxProps {
+type DatePickerProps = FormControlProps & {
   date?: string
   onDatePicked: (date: string) => void
 }
@@ -16,19 +20,24 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   ...props
 }) => {
   return (
-    <PseudoBox {...props}>
-      <FormLabel htmlFor="dueDate" color="gray.800">
-        Due Date:
-      </FormLabel>
+    <FormControl {...props}>
+      <FormLabel>Due Date</FormLabel>
       <ReactDatePicker
+        placeholderText="Enter your due date"
         selected={date ? new Date(date) : undefined}
         onChange={date => {
           if (date && !Array.isArray(date) && onDatePicked) {
             onDatePicked(dayjs(date).format('YYYY-MM-DD'))
           }
         }}
-        customInput={<Input />}
+        customInput={
+          <Input
+            _dark={{
+              bg: 'gray.900'
+            }}
+          />
+        }
       />
-    </PseudoBox>
+    </FormControl>
   )
 }
