@@ -30,13 +30,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             onDatePicked(dayjs(date).format('YYYY-MM-DD'))
           }
         }}
-        customInput={
-          <Input
-            _dark={{
-              bg: 'gray.900'
-            }}
-          />
-        }
+        customInput={<Input />}
       />
     </FormControl>
   )
