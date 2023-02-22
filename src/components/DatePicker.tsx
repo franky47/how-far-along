@@ -10,18 +10,20 @@ import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 type DatePickerProps = FormControlProps & {
+  label: string
   date?: string
   onDatePicked: (date: string) => void
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
+  label,
   date,
   onDatePicked,
   ...props
 }) => {
   return (
     <FormControl {...props}>
-      <FormLabel>Due Date</FormLabel>
+      <FormLabel>{label}</FormLabel>
       <ReactDatePicker
         placeholderText="Enter your due date"
         selected={date ? new Date(date) : undefined}

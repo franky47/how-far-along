@@ -41,6 +41,9 @@ export const TermProgress: React.FC<TermProgressProps> = ({
 
   return (
     <Stack {...props} spacing={8}>
+      <Text textAlign="center">
+        Due date: <b>{new Date(dueDate).toDateString()}</b>
+      </Text>
       <StatGroup
         flexDirection={['column', 'row']}
         alignItems={['center', 'flex-start']}

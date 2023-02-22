@@ -12,6 +12,7 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react'
+import dayjs from 'dayjs'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -20,13 +21,13 @@ import { ColorModeSwitch } from 'src/components/ColorModeSwitch'
 import { DatePicker } from 'src/components/DatePicker'
 
 type FormValues = {
-  dueDate: string
+  dateOfLastPeriod: string
   gestationWeeks: number
   babyName: string
 }
 
 const initialValues: FormValues = {
-  dueDate: '',
+  dateOfLastPeriod: dayjs().format('YYYY-MM-DD'),
   gestationWeeks: 41,
   babyName: ''
 }
@@ -39,8 +40,13 @@ const IndexPage: NextPage = () => {
   const onSubmit = React.useCallback(
     (values: FormValues) => {
       const hash = new URLSearchParams()
-      for (const [key, value] of Object.entries(values)) {
-        hash.set(key, value.toString())
+      const dueDate = dayjs(values.dateOfLastPeriod)
+        .add(values.gestationWeeks, 'weeks')
+        .format('YYYY-MM-DD')
+      hash.set('gestationWeeks', values.gestationWeeks.toFixed())
+      hash.set('dueDate', dueDate)
+      if (values.babyName) {
+        hash.set('babyName', values.babyName)
       }
       return router.push({
         pathname: '/stats',
@@ -65,8 +71,9 @@ const IndexPage: NextPage = () => {
         </Flex>
         <Stack as="form" spacing={4} onSubmit={handleSubmit(onSubmit)}>
           <DatePicker
-            date={watch('dueDate')}
-            onDatePicked={date => setValue('dueDate', date)}
+            label="Date of last period"
+            date={watch('dateOfLastPeriod')}
+            onDatePicked={date => setValue('dateOfLastPeriod', date)}
             isRequired
           />
           <FormControl>
