@@ -34,7 +34,7 @@ jobs:
         run: pnpm build
 
       # Continuous Delivery Pipeline --
-      - uses: dswistowski/surge-sh-action@341bcbd
+      - uses: dswistowski/surge-sh-action@c20b9ece7374f66af0b5f21e03587fc55bafa919
         name: Publish to Surge
         with:
           domain: ${{ secrets.DEPLOYMENT_URL }}
